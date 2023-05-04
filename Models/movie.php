@@ -17,16 +17,12 @@
             $this->genres = $genres;
         }
 
-        public function getVote($vote) {
-            return $this->vote = $vote;
-        }
-
         public function getGenre() {
 
             $generes = '';
 
             foreach( $this->genres as $genre) {
-                $generes .= $genre->type.' ';
+                $generes .= "<li>".$genre->type."</li>";
             }
 
             return $generes;
@@ -38,7 +34,7 @@
             $titles = '';
 
             foreach( $this->titles as $title) {
-                $titles .= $title->title.' ';
+                $titles .= "<li>".$title->title."</li>";
             }
 
             return $titles;
@@ -50,7 +46,7 @@
             $durations = '';
 
             foreach( $this->durations as $duration) {
-                $durations .= $duration->duration.' ';
+                $durations .= "<li>".$duration->duration."</li>";
             }
 
             return $durations;
@@ -62,7 +58,7 @@
             $years = '';
 
             foreach( $this->years as $year) {
-                $years .= $year->year.' ';
+                $years .= "<li>".$year->year."</li>";
             }
 
             return $years;
