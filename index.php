@@ -8,42 +8,34 @@
 </head>
 <body>
 
-<?php
-
-class Movie {
-
-    public $title;
-    public $duration;
-    public $year;
-    public $vote;
-
+    <?php 
     
-    public function __construct($title, $duration, $year)
-    {
-        $this->title = $title;
-        $this->duration = $duration;
-        $this->year = $year;
+        require __DIR__.'/Models/movie.php';
+        require __DIR__.'/Models/genre.php';
 
-    }
+        $genre = [
+            new GenreMovie('Azione'),
+            new GenreMovie('Avventura')
+        ];
 
-    public function getVote($vote) {
-        return $this->vote = $vote;
-    }
-}
+        $genre2 = [
+            new GenreMovie('Supereroi'),
+            new GenreMovie('Avventura')
+        ];
+    
+        $newMovie = new Movie('Star Wars', '2h 00m','1985',$genre);
 
-$newMovie = new Movie('Star Wars', '2h 00m','1985');
-
-$newMovie2 = new Movie('The Avanger', '2h 20m','2012');
-
-
-
-?>
+        $newMovie2 = new Movie('The Avanger', '2h 20m','2012',$genre2);
+    
+    
+    ?>
 
     <ul>
         <li>Title: <?php echo $newMovie->title?></li>
         <li>Duration: <?php echo $newMovie->duration?></li>
         <li>Year: <?php echo $newMovie->year?></li>
         <li>Vote: <?php echo $newMovie->getVote(5)?></li>
+        <li>Genre: <?php echo $newMovie->getGenre()?></li>
     </ul>
 
     <ul>
@@ -54,13 +46,12 @@ $newMovie2 = new Movie('The Avanger', '2h 20m','2012');
                 <li>Duration: ".$newMovie2->duration."</li>
                 <li>Year: ".$newMovie2->year."</li>
                 <li>Vote: ".$newMovie2 -> getVote(4)."</li>
+                <li>Vote: ".$newMovie2 -> getGenre()."</li>
             ";
         
         
         ?>
     </ul>
-
-
     
 </body>
 </html>
