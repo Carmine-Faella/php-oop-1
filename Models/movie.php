@@ -2,27 +2,19 @@
 
     class Movie {
 
-        public $title;
-        public $duration;
-        public $year;
+        public $titles;
+        public $durations;
+        public $years;
         public $vote;
         public $genres;
 
         
-        public function __construct($title, $duration, $year,array $genres)
+        public function __construct(array $titles, array $durations, array $years,array $genres)
         {
-            $this->title = $title;
-            $this->duration = $duration;
-            $this->year = $year;
+            $this->titles = $titles;
+            $this->durations = $durations;
+            $this->years = $years;
             $this->genres = $genres;
-
-            foreach ($genres as $genre) {
-                if (!$genre instanceof GenreMovie) {
-                    echo 'Ogni genere deve essere una instanza della classe GenreMovie!';
-                    die();
-                }
-            }
-
         }
 
         public function getVote($vote) {
@@ -38,6 +30,42 @@
             }
 
             return $generes;
+
+        }
+
+        public function getTitle() {
+
+            $titles = '';
+
+            foreach( $this->titles as $title) {
+                $titles .= $title->title.' ';
+            }
+
+            return $titles;
+
+        }
+
+        public function getDuration() {
+
+            $durations = '';
+
+            foreach( $this->durations as $duration) {
+                $durations .= $duration->duration.' ';
+            }
+
+            return $durations;
+
+        }
+
+        public function getYear() {
+
+            $years = '';
+
+            foreach( $this->years as $year) {
+                $years .= $year->year.' ';
+            }
+
+            return $years;
 
         }
 

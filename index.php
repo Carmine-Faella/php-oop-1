@@ -12,45 +12,40 @@
     
         require __DIR__.'/Models/movie.php';
         require __DIR__.'/Models/genre.php';
+        require __DIR__.'/Models/title.php';
+        require __DIR__.'/Models/duration.php';
+        require __DIR__.'/Models/year.php';
 
         $genre = [
             new GenreMovie('Azione'),
             new GenreMovie('Avventura')
         ];
 
-        $genre2 = [
-            new GenreMovie('Supereroi'),
-            new GenreMovie('Avventura')
+        $title = [
+            new TitleMovie('Star Wars'),
+            new TitleMovie('The Avanger')
+        ];
+
+        $duration = [
+            new DurationMovie('2h 20m'),
+            new DurationMovie('2h 00m')
+        ];
+
+        $year = [
+            new YearMovie('1985'),
+            new YearMovie('2012')
         ];
     
-        $newMovie = new Movie('Star Wars', '2h 00m','1985',$genre);
-
-        $newMovie2 = new Movie('The Avanger', '2h 20m','2012',$genre2);
-    
+        $newMovie = new Movie($title, $duration, $year, $genre);    
     
     ?>
 
     <ul>
-        <li>Title: <?php echo $newMovie->title?></li>
-        <li>Duration: <?php echo $newMovie->duration?></li>
-        <li>Year: <?php echo $newMovie->year?></li>
-        <li>Vote: <?php echo $newMovie->getVote(5)?></li>
+        <li>Title: <?php echo $newMovie->getTitle()?></li>
+        <li>Duration: <?php echo $newMovie->getDuration()?></li>
+        <li>Year: <?php echo $newMovie->getYear()?></li>
         <li>Genre: <?php echo $newMovie->getGenre()?></li>
-    </ul>
-
-    <ul>
-        <?php 
-        
-            echo "
-                <li>Title: ".$newMovie2->title."</li>
-                <li>Duration: ".$newMovie2->duration."</li>
-                <li>Year: ".$newMovie2->year."</li>
-                <li>Vote: ".$newMovie2 -> getVote(4)."</li>
-                <li>Vote: ".$newMovie2 -> getGenre()."</li>
-            ";
-        
-        
-        ?>
+        <li>Vote: <?php echo $newMovie->getVote(5)?></li>
     </ul>
     
 </body>
