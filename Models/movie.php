@@ -9,60 +9,25 @@
         public $genres;
 
         
-        public function __construct(array $titles, array $durations, array $years,array $genres)
+        public function __construct($titles, $durations, $years, GenreMovie $genres)
         {
             $this->titles = $titles;
             $this->durations = $durations;
             $this->years = $years;
             $this->genres = $genres;
+    
         }
 
-        public function getGenre() {
-
-            $generes = '';
-
-            foreach( $this->genres as $genre) {
-                $generes .= "<li>".$genre->type."</li>";
-            }
-
-            return $generes;
-
-        }
-
-        public function getTitle() {
-
-            $titles = '';
-
-            foreach( $this->titles as $title) {
-                $titles .= "<li>".$title->title."</li>";
-            }
-
-            return $titles;
-
-        }
-
-        public function getDuration() {
-
-            $durations = '';
-
-            foreach( $this->durations as $duration) {
-                $durations .= "<li>".$duration->duration."</li>";
-            }
-
-            return $durations;
-
-        }
-
-        public function getYear() {
-
-            $years = '';
-
-            foreach( $this->years as $year) {
-                $years .= "<li>".$year->year."</li>";
-            }
-
-            return $years;
-
+        public function getDetails(){
+            return "
+                    <tr class='text-white'>
+                        <td>".$this->titles."</td>
+                        <td>".$this->durations."</td>
+                        <td>".$this->years."</td>
+                        <td>".$this->genres->type."</td>
+                    </tr>
+                    
+                ";
         }
 
     }

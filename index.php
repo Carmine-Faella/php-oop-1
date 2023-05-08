@@ -14,35 +14,7 @@
     
         require __DIR__.'/Models/movie.php';
         require __DIR__.'/Models/genre.php';
-        require __DIR__.'/Models/title.php';
-        require __DIR__.'/Models/duration.php';
-        require __DIR__.'/Models/year.php';
-
-        $genre = [
-            new GenreMovie('Azione, Fantascienza'),
-            new GenreMovie('Azione, Supereroi'),
-            new GenreMovie('Commedia, Drammatico')
-        ];
-
-        $title = [
-            new TitleMovie('Star Wars'),
-            new TitleMovie('The Avengers'),
-            new TitleMovie('Forrest Gump')
-        ];
-
-        $duration = [
-            new DurationMovie('121m'),
-            new DurationMovie('142m'),
-            new DurationMovie('142m')
-        ];
-
-        $year = [
-            new YearMovie('1977'),
-            new YearMovie('2012'),
-            new YearMovie('1994'),
-        ];
-    
-        $newMovie = new Movie($title, $duration, $year, $genre);    
+        require __DIR__.'/Models/db.php';
     
     ?>
 
@@ -59,28 +31,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">
-                            <ul>
-                                <?php echo $newMovie->getTitle()?>
-                            </ul>
-                        </th>
-                        <td>
-                            <ul>
-                                <?php echo $newMovie->getDuration()?>
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                <?php echo $newMovie->getYear()?>
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                <?php echo $newMovie->getGenre()?>
-                            </ul>
-                        </td>
-                    </tr>
+                            <?php 
+                                foreach($newMovie as $Card){
+                                    echo $Card->getDetails();
+                                };        
+                            ?>
                 </tbody>
             </table>
         </div>
